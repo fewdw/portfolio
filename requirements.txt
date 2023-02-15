@@ -1,6 +1,5 @@
 bcrypt==4.0.1
 beautifulsoup4==4.11.2
-bson==0.5.10
 cachelib==0.10.2
 certifi==2022.12.7
 chardet==5.1.0
