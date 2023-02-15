@@ -10,7 +10,7 @@ ca = certifi.where()
 
 #Connection string 
 MONGODB_PASSWORD = os.environ.get("MONGODB_PASSWORD")
-connection_string = f"mongodb+srv://fewdw:{MONGODB_PASSWORD}@portfolio.wffp2d3.mongodb.net/?retryWrites=true&w=majority"
+connection_string = "mongodb+srv://fewdw:fewdw@portfolio.wffp2d3.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(connection_string, tlsCAFile=ca)
 
 database = client.portfolio
