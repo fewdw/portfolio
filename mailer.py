@@ -3,8 +3,8 @@ from email.mime.text import MIMEText
 import smtplib
 import os
 
-smtp_email = os.environ.get("smtp_email")
-smtp_password = os.environ.get("smtp_password")
+smtp_email = "frederic.alefebvre@gmail.com"
+smtp_password = "kdqhtwbnesoakare"
 
 def send_mail(email, subject, message):
 
