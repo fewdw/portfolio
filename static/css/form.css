@@ -1,0 +1,42 @@
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="submit"],
+#contact textarea {
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#contact-form input[type="email"],
+#contact-form input[type="text"],
+#contact-form textarea {
+  width: 40%;
+}
+
+#contact textarea[name="message"] {
+  resize: none; /* added property to disable resizing */
+}
+
+#contact input[type="submit"] {
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  color: #2978b5;
+  cursor: pointer;
+  border: 2px solid #2978b5;
+}
+
+#contact input[type="submit"]:hover {
+  background-color: #2978b5;
+  color: white;
+  background-position: left bottom;
+}

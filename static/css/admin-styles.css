@@ -1,0 +1,27 @@
+html, body {
+    width: 70%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+#admin-form{
+    width:50%;
+    display: table;
+    margin: auto;
+    
+}
+
+.small-img {
+    max-width: 200px;
+    max-height: 200px;
+}
+

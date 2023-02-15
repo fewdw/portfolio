@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/fa62c117c7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="../static/css/form.css" />
+    <title>Frédéric-Alexandre Lefebvre</title>
+  </head>
+  <body class="light" id="top">
+    <header class="header center">
+      <h3>
+        <a class="link" href="/admin/login">FAL.</a>
+      </h3>
+
+      <nav class="nav center">
+        <ul class="nav__list center">
+          <li class="nav__list-item">
+            <a class="link link--nav" href="#projects">Projects</a>
+          </li>
+          <li class="nav__list-item">
+            <a class="link link--nav" href="#skills">Skills</a>
+          </li>
+          <li class="nav__list-item">
+            <a class="link link--nav" href="#contact">Contact</a>
+          </li>
+        </ul>
+
+        <button type="button" aria-label="toggle theme" class="btn btn--icon">
+          <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
+        </button>
+
+        <button
+          type="button"
+          aria-label="toggle navigation"
+          class="btn btn--icon nav__hamburger"
+        >
+          <i aria-hidden="true" class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- About -->
+      <div class="about center">
+        <h1>Hi, I am <span class="about__name">Frederic.</span></h1>
+        <h2 class="about__role" id="job-desc">{{BIO[1]["job"]}}.</h2>
+        <p class="about__desc">{{BIO[0]['desc']}}</p>
+
+        <div class="avatar">
+          <img src="../static/pic/avatar.png" class="profile-pic" id="profile-pic"/>
+        </div>
+
+        <div class="about__contact center">
+
+          <!--RESUME BLUE BOX-->
+          <a href="/resume">
+            <span class="btn btn--outline">resume</span>
+          </a>
+
+          <!--RESUME ICON
+          <a
+            href="/resume"
+            aria-label="github"
+            class="link link--icon"
+            target="_blank"
+          >
+            <img src="../static/pic/download-resume.png" class="cv-icon" alt="">
+          </a>
+          -->
+          <a
+            href="https://github.com/fewdw"
+            aria-label="github"
+            class="link link--icon"
+          >
+            <i aria-hidden="true" class="fab fa-github"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/frederic-alexandre-lefebvre-b61909222/"
+            aria-label="linkedin"
+            class="link link--icon"
+          >
+            <i aria-hidden="true" class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <section id="projects" class="section projects">
+        <h2 class="section__title">Projects</h2>
+
+        <div class="projects__grid">
+          {% for P in PROJECTS %}
+          <div class="project">
+            <h3>{{P["name"]}}</h3>
+            <p class="project__description">{{P["description"]}}</p>
+            <ul class="project__stack">
+              {%for T in P["technology"]%}
+              <li class="project__stack-item">{{T}}</li>
+              {%endfor%}
+            </ul>
+
+            <a
+              href="{{P['github']}}"
+              target="_blank"
+              aria-label="source code"
+              class="link link--icon"
+            >
+              <i aria-hidden="true" class="fab fa-github"></i>
+            </a>
+            <a
+              href="{{P['deployment']}}"
+              target="_blank"
+              aria-label="live preview"
+              class="link link--icon"
+            >
+              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          {%endfor%}
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="section skills" id="skills">
+        <h2 class="section__title">Skills</h2>
+        <ul class="skills__list">
+          {%for s in SKILLS %}
+          <li
+            class="skills__list-item btn btn--plain"
+            id="skill-element"
+            {% if s["category"] == "programming" %}
+            style="color:#F92672;"
+            {%elif s["category"] == "framework" %}
+            style="color:#66D9EF;"
+            {%elif s["category"] == "web-db" %}
+            style="color:#A6E22E;"
+            {%elif s["category"] == "tech" %}
+            style="color:#FD971F;"
+            {% endif %}
+
+          >
+          <img class="icon" src="{{s['icon']}}">
+            {{s['skill']}}
+          </li>
+          {%endfor%}
+        </ul>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+
+        <form action="/send/mail" method="post" id="contact-form">
+
+          <h2 id="contact-me">Contact Me</h2>
+
+          <input type="email" name="email" placeholder="email" required>
+
+          <input type="text" name="subject" placeholder="subject" required minlength="4">
+
+          <textarea name="message" placeholder="message" required minlength="4"></textarea>
+
+          <input type="submit" value="send" class="one two" id="submit-button">
+
+        </form>
+
+      </section>
+      
+    </main>
+
+    <footer class="footer">
+    </footer>
+
+    <div class="scroll-container">
+      <div class="scroll-top">
+        <a aria-label="Scroll up" href="#top">
+          <i aria-hidden="true" class="fas fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/hover-gif.js"></script>
+  </body>
+</html>

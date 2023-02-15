@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../static/css/dashboard-styles.css" />
+</head>
+<body>
+<p>
+   You are in admin dashboard.
+   <a href="/">Home</a>.
+   <a href="/admin/logout">Logout</a>.
+</p>
+
+<div class="container">
+
+    <div class="bio">
+        <h1>General</h1>
+        <form method="POST" action="update/bio">
+         <li>Bio:
+            <input type="text" name="bio" value='{{BIO[0]["desc"]}}'>
+         </li>
+           <input type="hidden" name="id" value='{{ BIO[0]["_id"] }}'>
+           <input type="submit"></input>
+        </form>
+
+        <form method="POST" action="update/jobrole">
+            <li>
+               Description:
+               <input type="text" name="job" value='{{BIO[1]["job"]}}'>
+            </li>
+               <input type="hidden" name="id" value='{{ BIO[1]["_id"]['$oid']}}'>
+               <input type="submit"></input>
+        </form>
+
+        <form method="POST" action="update/email">
+         <li>
+            Email:
+            <input type="text" name="email" value='{{BIO[2]["email"]}}'>
+         </li>
+            <input type="hidden" name="id" value='{{ BIO[2]["_id"]['$oid']}}'>
+            <input type="submit"></input>
+     </form>
+
+     <form action="/add/cv" method="post" enctype="multipart/form-data">
+      <li>
+         Resume:
+         <input type="file" name="pdf_file">
+      </li>
+      <input type="hidden" name="id" value="{{BIO[3]['_id']['$oid']}}">
+      <input type="submit" value="submit">
+    </form>
+
+    <form action="/add/avatar" method="post" enctype="multipart/form-data">
+      <li>
+         Picture:
+         <input type="file" name="avatar">
+      </li>
+      <input type="hidden" name="id" value="{{BIO[4]['_id']['$oid']}}">
+      <input type="submit" value="Submit">
+    </form>
+
+    </div>
+
+    <div class="projects">
+        <h1>Projects</h1>
+        {% for P in PROJECTS %}
+        <ul>
+            <li>{{P['name']}}</li>
+            <li>{{P['description']}}</li>
+            <li>{{P['technology']}}</li>
+            <li>{{P['github']}}</li>
+            <li>{{P['deployment']}}</li>
+           <li>
+              <form method="post" action="delete/project">
+                 <input type="hidden" name="id" value='{{P["_id"]["$oid"]}}'>
+                 <button type="submit">-</button>
+              </form>
+           </li>
+        </ul>
+        {%endfor%}
+        add new project:
+        <form method="POST" action="/add/project">
+           <ul>
+              <li>name:<input type="text" name="name"></li>
+              <li>description:<input type="text" name="description"></li>
+              <li>technology used:<input type="text" name="technology"></li>
+              <li>github link:<input type="text" name="github"></li>
+              <li>deployment link:<input type="text" name="deployment"></li>
+              <button type="Submit">+</button>
+           </ul>
+        </form>
+    </div>
+
+    <div class="skills">
+        <h1>Skills</h1>
+        <p><a href="https://icons8.com" target="_blank">find icons</a></p>
+        <ul>
+           {%for S in SKILLS %}
+           <form method="post" action="delete/skill">
+              <li>{{S["skill"]}} : {{S["category"]}}<button type="submit">-</button></li>
+              <input type="hidden" name="id" value='{{S["_id"]["$oid"]}}'>
+           </form>
+           {%endfor%}
+        </ul>
+        <form method="POST" action="add/skill">
+           <ul>
+              <li>skill:<input type="text" name="skill"></li>
+              <li>icon url:<input type="text" name="icon"></li>
+              <li>
+                 category:
+                 <select name="category">
+                    <option value="programming">programming</option>
+                    <option value="web-db">Web and Database</option>
+                    <option value="framework">framework</option>
+                    <option value="tech">Tech</option>
+                    <option value="Language">Language</option>
+                 </select>
+                 <button type="Submit">+</button>
+              </li>
+           </ul>
+        </form>
+    </div>
+
+    <div class="work">
+        <h1>Work</h1>
+        {%for W in WORK%}
+        <form method="post" action="delete/work">
+           <ul>
+              <li>location: {{W["location"]}}</li>
+              <li>description: {{W["description"]}}</li>
+              <li>time: {{W["time"]}}</li>
+              <input type="hidden" name="id" value='{{W["_id"]["$oid"]}}'>
+              <button type="Submit">-</button>
+           </ul>
+        </form>
+        {%endfor%}
+        <form method="POST" action="add/work">
+           <ul>
+              <li>location:<input type="text" name="location"></li>
+              <li>description:<input type="text" name="description"></li>
+              <li>time:<input type="text" name="time"></li>
+              <button type="Submit">+</button>
+           </ul>
+        </form>
+    </div>
+
+    <div class="education">
+        <h1>Education</h1>
+        {%for E in EDUCATION%}
+        <form method="post" action="delete/education">
+           <ul>
+              <li>name: {{E["name"]}}</li>
+              <li>program: {{E["program"]}}</li>
+              <li>year: {{E["year"]}}</li>
+              <input type="hidden" name="id" value='{{E["_id"]["$oid"]}}'>
+              <button type="Submit">-</button>
+           </ul>
+        </form>
+        {%endfor%}
+        <form method="POST" action="add/education">
+           <ul>
+              <li>name:<input type="text" name="name"></li>
+              <li>program:<input type="text" name="program"></li>
+              <li>year:<input type="text" name="year"></li>
+              <button type="Submit">+</button>
+           </ul>
+        </form>
+    </div>
+
+</div>
+   
+</body>
+</html>
