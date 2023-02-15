@@ -110,13 +110,13 @@ def delete_project_url():
 @app.route("/add/skill", methods=["POST"])
 def add_skill_url():
     post_skill(request.form.get("skill"),request.form.get("category"),request.form.get("icon"))
-    return redirect("/admin")
+    return redirect("/admin#skills")
 
 
 @app.route("/delete/skill", methods=["POST"])
 def delete_skill_url():
     delete_skill(request.form.get("id"))
-    return redirect("/admin")
+    return redirect("/admin#skills")
 
 
 @app.route("/add/work", methods=["POST"])
