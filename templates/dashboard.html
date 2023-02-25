@@ -126,7 +126,7 @@
     <div class="work">
         <h1>Work</h1>
         {%for W in WORK%}
-        <form method="post" action="delete/work">
+        <form method="POST" action="delete/work">
            <ul>
               <li>location: {{W["location"]}}</li>
               <li>description: {{W["description"]}}</li>
@@ -154,8 +154,9 @@
               <li>name: {{E["name"]}}</li>
               <li>program: {{E["program"]}}</li>
               <li>year: {{E["year"]}}</li>
-              <input type="hidden" name="id" value='{{E["_id"]["$oid"]}}'>
-              <button type="Submit">-</button>
+              <input type="hidden" name="id" value="{{E['_id']['$oid']}}">
+              {{E}}
+              <input type="Submit" value="-">
            </ul>
         </form>
         {%endfor%}

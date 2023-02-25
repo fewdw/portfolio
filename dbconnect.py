@@ -79,7 +79,7 @@ def post_work(location,description,time):
     work.insert_one(work_di)
 
 def delete_work(_id):
-    skills.delete_one({"_id":ObjectId(_id)})
+    work.delete_one({"_id":ObjectId(_id)})
 
 def get_education():
     all_edu = education.find()

@@ -137,25 +137,21 @@
       <section class="section skills" id="skills">
         <h2 class="section__title">Skills</h2>
         <ul class="skills__list">
-          {%for s in SKILLS %}
-          <li
-            class="skills__list-item btn btn--plain"
-            id="skill-element"
-            {% if s["category"] == "programming" %}
-            style="color:#F92672;"
-            {%elif s["category"] == "framework" %}
-            style="color:#66D9EF;"
-            {%elif s["category"] == "web-db" %}
-            style="color:#A6E22E;"
-            {%elif s["category"] == "tech" %}
-            style="color:#FD971F;"
-            {% endif %}
-
-          >
-          <img class="icon" src="{{s['icon']}}">
-            {{s['skill']}}
-          </li>
-          {%endfor%}
+          {% set category_colors = {
+            "programming": "#F92672",
+            "framework": "#66D9EF",
+            "web-db": "#A6E22E",
+            "tech": "#FD971F"
+        } %}
+        
+        {% for category in ["programming", "framework", "web-db", "tech"] %}
+          {% for s in SKILLS if s["category"] == category %}
+            <li class="skills__list-item btn btn--plain" id="skill-element" style="color: {{ category_colors[category] }};">
+              <img class="icon" src="{{ s['icon'] }}">
+              {{ s['skill'] }}
+            </li>
+          {% endfor %}
+        {% endfor %}
         </ul>
       </section>
 
