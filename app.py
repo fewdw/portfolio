@@ -177,5 +177,9 @@ def send_mail_route():
     send_mail(request.form.get("email"),request.form.get("subject"),request.form.get("message"))
     return redirect("/#contact")
 
+@app.route("/docs/isrs-reference")
+def isrs_reference_route():
+    return send_file('static/docs/isrs-reference.pdf', as_attachment=False)
+
 if __name__ == "__main__":
     app.run()
