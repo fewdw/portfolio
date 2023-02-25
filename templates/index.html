@@ -120,6 +120,8 @@
             >
               <i aria-hidden="true" class="fab fa-github"></i>
             </a>
+
+            {% if P["deployment"] != "" %}
             <a
               href="{{P['deployment']}}"
               target="_blank"
@@ -128,6 +130,7 @@
             >
               <i aria-hidden="true" class="fas fa-external-link-alt"></i>
             </a>
+            {%endif%}
           </div>
           {%endfor%}
         </div>
@@ -146,7 +149,7 @@
         
         {% for category in ["programming", "framework", "web-db", "tech"] %}
           {% for s in SKILLS if s["category"] == category %}
-            <li class="skills__list-item btn btn--plain" id="skill-element" style="color:  category_colors[category] ;">
+            <li class="skills__list-item btn btn--plain" id="skill-element" style="color: {{ category_colors[category] }};">
               <img class="icon" src="{{ s['icon'] }}">
               {{ s['skill'] }}
             </li>
@@ -168,7 +171,7 @@
 
           <textarea name="message" placeholder="message" required minlength="4"></textarea>
 
-          <input type="submit" value="send" class="one two" id="submit-button">
+          <input type="submit" value="send" class="" id="submit-button">
 
         </form>
 
