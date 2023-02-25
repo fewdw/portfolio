@@ -146,7 +146,7 @@
         
         {% for category in ["programming", "framework", "web-db", "tech"] %}
           {% for s in SKILLS if s["category"] == category %}
-            <li class="skills__list-item btn btn--plain" id="skill-element" style="color: {{ category_colors[category] }};">
+            <li class="skills__list-item btn btn--plain" id="skill-element" style="color:  category_colors[category] ;">
               <img class="icon" src="{{ s['icon'] }}">
               {{ s['skill'] }}
             </li>
