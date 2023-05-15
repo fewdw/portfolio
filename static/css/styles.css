@@ -270,7 +270,7 @@ main {
 
 .about__desc,
 .about__contact {
-  margin-top: 2.4em;
+  margin-top: 0.4em;
 }
 
 .about .link--icon {
@@ -430,7 +430,7 @@ main {
 .avatar {
   display: flex;
   justify-content: center;
-  width: 70%;
+  width: 40%;
   margin-top: 50px;
   margin-bottom: 50px;
 }
