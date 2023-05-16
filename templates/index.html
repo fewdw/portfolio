@@ -109,6 +109,7 @@
               {%endfor%}
             </ul>
 
+            {% if P["github"] != "" %}
             <a
               href="{{P['github']}}"
               target="_blank"
@@ -117,6 +118,7 @@
             >
               <i aria-hidden="true" class="fab fa-github"></i>
             </a>
+            {%endif%}
 
             {% if P["deployment"] != "" %}
             <a
